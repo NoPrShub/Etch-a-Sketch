@@ -6,10 +6,14 @@ function createGrid(n) {
     for (let i = 1; i <= grid; i++) {
         let div = document.createElement("div");
         div.style.width = `${cellWidth}%`;
-        div.style.height = `${500/n}px`;
+        div.style.height = `${900/n}px`;
         div.classList.add("cell");
         container.appendChild(div);
     }
 }
 
 createGrid(20);
+
+container.addEventListener("mouseover", (e) => {
+    e.target.style.backgroundColor = "black";
+});
