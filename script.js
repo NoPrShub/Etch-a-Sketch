@@ -1,7 +1,6 @@
 const container = document.querySelector("#container");
 
 function createGrid(n) {
-    const containerWidth = container.getBoundingClientRect().width;
     const cellWidth = 100 / n;
     const grid = n*n;
     for (let i = 1; i <= grid; i++) {
