@@ -4,12 +4,16 @@
     box-sizing: border-box;
 }
 
-#grid-size-btn {
-    display: block;
-    margin: 20px auto;
+#btn-container {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.btn {
     font-size: 30px;
     padding: 5px;
     border-radius: 8px;
+    margin-left: 40px;
 }
 
 #container {

@@ -1,5 +1,30 @@
+let currentModeHandler = drawBlack;
+
 const container = document.querySelector("#container");
 const gridSizeBtn = document.querySelector("#grid-size-btn");
+const rainbowModeBtn = document.querySelector("#rainbow-mode-btn");
+const normalModeBtn = document.querySelector("#normal-mode-btn");
+
+container.addEventListener("mouseover", (e) => {
+    currentModeHandler(e);
+});
+
+gridSizeBtn.addEventListener("click", () => {
+    const size = getGridSize();
+
+    if(size !== null) {
+        createGrid(size);
+    }
+});
+
+rainbowModeBtn.addEventListener("click", () => {
+    currentModeHandler = drawRainbow;
+});
+
+normalModeBtn.addEventListener("click", () => {
+    currentModeHandler = drawBlack;
+});
+
 
 function createGrid(n) {
     container.replaceChildren();
@@ -16,17 +41,15 @@ function createGrid(n) {
 
 createGrid(20);
 
-container.addEventListener("mouseover", (e) => {
-    e.target.style.backgroundColor = "black";
-});
+function randomRGBValue() {
+    const randFun = () => Math.floor(Math.random() * 256);
+    const red = randFun();
+    const green = randFun();
+    const blue = randFun();
 
-gridSizeBtn.addEventListener("click", () => {
-    const size = getGridSize();
+    return `rgb(${red}, ${green}, ${blue})`;
+}
 
-    if(size !== null) {
-        createGrid(size);
-    }
-})
 
 function getGridSize() {
     while(true) {
@@ -44,4 +67,12 @@ function getGridSize() {
 
         alert("Please enter a number between(1 & 100).");
     } 
+}
+
+function drawRainbow(e) {
+    e.target.style.backgroundColor = randomRGBValue();
+}
+
+function drawBlack(e) {
+    e.target.style.backgroundColor = "black";
 }
